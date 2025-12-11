@@ -22,9 +22,23 @@ import tkinter as tk
 
 window = tk.Tk()
 window.title("Random Facts! ")
-window.geometry("400x250")
+window.geometry("450x250")
 window.resizable(False, False)
 
 prompt = tk.Label(window, text="Want to see a random fun fact? ",
 font=("Arial", 14))
 prompt.pack(pady=10)
+
+result_label = tk.Label(window, text =" ", font = ("Arial", 14, "bold"), fg = "blue")
+result_label.pack(pady=15)
+
+
+def reverse_message():
+    text = entry.get()
+    reversed_text = text[::-1] 
+    result_label.config(text=f"Backwards: {reversed_text}")
+reverse_button = tk.Button(window, text="Reverse Message!",
+font=("Arial", 14),
+command=reverse_message)
+reverse_button.pack(pady=10)
+window.mainloop()

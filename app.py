@@ -3,42 +3,60 @@
 https://uselessfacts.jsph.pl/random.json
  """
 
+
 import requests
+import tkinter as tk
+
 
 def getRandom_fact():
     response = requests.get(f"https://uselessfacts.jsph.pl/random.json")
-    if response.status_code != 200:
-        print("Error fetching data!")
-        return None
-    
-    data = response.json()
-    return data
+    return response.json()
 
-random = getRandom_fact()
-for key, value in random.items():
-    print(f"{key.title()}: {value}")
 
-import tkinter as tk
+def check():
+    if entry.get() == fact:
+        result_label.configure(text="Correct!")
+    else:
+        result_label.configure(text="Try again…")
+
+
+fact = getRandom_fact()
+reversed_fact = fact[::-1]
+
+
+
 
 window = tk.Tk()
-window.title("Random Facts! ")
-window.geometry("450x250")
-window.resizable(False, False)
-
-prompt = tk.Label(window, text="Want to see a random fun fact? ",
-font=("Arial", 14))
-prompt.pack(pady=10)
-
-result_label = tk.Label(window, text =" ", font = ("Arial", 14, "bold"), fg = "blue")
-result_label.pack(pady=15)
+window.title("Reverse the Fact")
 
 
-def reverse_message():
-    text = entry.get()
-    reversed_text = text[::-1] 
-    result_label.config(text=f"Backwards: {reversed_text}")
-reverse_button = tk.Button(window, text="Reverse Message!",
-font=("Arial", 14),
-command=reverse_message)
-reverse_button.pack(pady=10)
+tk.Label(window, text = "guess the reversed fun fact ").pack()
+
+
+tk.Label(window, text = reversed_fact, wraplength = 300).pack(pady = 10)
+
+
+entry = tk.Entry(window, width=40)
+entry.pack()
+
+
+tk.Button(window, text = "Check", command=check).pack(pady = 10)
+
+
+result_label = tk.Label(window, text = "")
+result_label.pack()
+
+
 window.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+

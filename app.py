@@ -12,7 +12,6 @@ def getRandom_fact():
     x = response.json()
     return  x["text"]
 
-
 title_font = ("Arial", 60)
 text_font = ("Arial", 25)
 result_font = ("Arial", 30)
@@ -27,12 +26,9 @@ window.title("reverse the fact")
 window.configure(bg="lightblue")
 
 
-tk.Label(
-window, 
-text = "guess the reversed fun fact ",
-Font = title_font).pack(pady = 10 )
-
-tk.Label(
+y = tk.Label(window, text = "guess the reversed fun fact ",)
+y.pack
+z = tk.Label(
     window,
     text=reversed_fact,
     wraplength=300,

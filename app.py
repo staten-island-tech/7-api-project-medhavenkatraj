@@ -1,3 +1,6 @@
+print("App started")
+input("Press Enter to exit...")
+
 
 import requests
 import tkinter as tk
